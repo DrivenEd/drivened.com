@@ -1,0 +1,7 @@
+Title: DrivenEd
+----
+Author: Oz Ramos
+----
+Description: rapid Education with Google Drive
+----
+Copyright: © 2012-(date: Year) (link: http://twitter.com/Driven_Ed text: @Driven_Ed)

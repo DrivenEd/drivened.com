@@ -1,0 +1,21 @@
+h1, h2, h3, h4, h5, h6{
+    font-weight: 300;
+}
+
+h1{
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    font-size: 48px;
+    line-height: 56px;
+    font-weight: 100;
+
+    b{font-weight: 300;}
+    sub{
+        margin-top: 24px;
+        display: block;
+        letter-spacing: normal;
+        font-size: 24px;
+        text-transform: none;
+        font-weight: 300;
+    }
+}

@@ -1,0 +1,88 @@
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Variables
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+$full:      1000px;
+$gutter:    20px;
+
+//- - - - - - - - - - - - - - - - - - - - - - - -
+// .c*  = Fully Responsive
+// .sc* = Static-Responsive (they don't stack and therefor behave like tables)
+//- - - - - - - - - - - - - - - - - - - - - - - -
+.row,
+.c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12,
+.sc1, .sc2, .sc3, .sc4, .sc5, .sc6, .sc7, .sc8, .sc9, .sc10, .sc11, .sc12
+{
+    @extend .box-sizing;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+}
+.c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12,
+.sc1, .sc2, .sc3, .sc4, .sc5, .sc6, .sc7, .sc8, .sc9, .sc10, .sc11, .sc12{
+    display: inline-block;
+    padding: 0 $gutter / 2;
+    &.bottom{vertical-align: bottom;}
+}
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Special
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+.row{
+    width: $full;
+    margin: auto;
+    clear: both;
+    padding: 0;
+    list-style: none;
+}
+section, .row{
+    &.padless{
+        .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12,
+        .sc1, .sc2, .sc3, .sc4, .sc5, .sc6, .sc7, .sc8, .sc9, .sc10, .sc11, .sc12{
+            padding: 0;
+        }
+    }   
+}
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Columns
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+.c2, .sc2{width: percentage( 2/12)}
+.c3, .sc3{width: percentage( 3/12)}
+.c4, .sc4{width: percentage( 4/12)}
+.c5, .sc5{width: percentage( 5/12)}
+.c6, .sc6{width: percentage( 6/12)}
+.c7, .sc7{width: percentage( 7/12)}
+.c8, .sc8{width: percentage( 8/12)}
+.c9, .sc9{width: percentage( 9/12)}
+.c10, .sc10{width: percentage( 10/12)}
+.c11, .sc11{width: percentage( 11/12)}
+
+
+
+//###############################################
+// Responsive
+//###############################################
+//- - - - - - - - - - - - - - - - - - - - - - - -
+// Large Desktops
+//- - - - - - - - - - - - - - - - - - - - - - - -
+@media only screen and (max-width: $full + $gutter*2) {
+    .row{
+        width: 100%;
+        padding-left: $gutter;
+        padding-right: $gutter;
+    }
+}
+
+//- - - - - - - - - - - - - - - - - - - - - - - -
+// Desktop and Tablets
+//- - - - - - - - - - - - - - - - - - - - - - - -
+@media only screen and (max-width: 800px) {
+    .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12{width: 50%;}
+}
+//- - - - - - - - - - - - - - - - - - - - - - - -
+// Small devices
+//- - - - - - - - - - - - - - - - - - - - - - - -
+@media only screen and (max-width: 600px) {
+    .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12{width: 100%;}
+}
