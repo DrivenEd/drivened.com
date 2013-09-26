@@ -1,6 +1,9 @@
 $wooly-border:  $violet;
 $wooly-bg:      $violet;
-$wooly-color:   $white;
+$wooly-color:   $offWhite;
+
+$wooly-error-bg: $red;
+$wooly-error-border: shade($red, 40%);
 
 .woofy-message{
     position: fixed;
@@ -13,6 +16,9 @@ $wooly-color:   $white;
     font-size: 14px;
     line-height: 22px;
     color: $wooly-color;
+    opacity: .9;
+
+    div{position: relative; z-index: 1}
 
     &:before{
         position: absolute;
@@ -23,6 +29,11 @@ $wooly-color:   $white;
         width: 100%;
         height: 100%;
         background: $wooly-bg;
-        opacity: 0.5;
+        opacity: 0.75;
+    }
+
+    &.woofy-error{
+        border-color: $wooly-error-border;
+        &:before{background: $wooly-error-bg}
     }
 }

@@ -3,8 +3,6 @@
     
 <?php snippet('scripts') ?>
 
-<script>
-    app.auth('page.drive', true);
-</script>
+<script src="<?= url('assets/js/pages/drive.js') ?>"></script>
 
 <?php snippet('footer') ?>

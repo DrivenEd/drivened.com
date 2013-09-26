@@ -15,3 +15,4 @@
 </head>
 
 <body>
+    <form id="router" class="hidden"></form>

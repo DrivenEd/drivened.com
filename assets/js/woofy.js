@@ -55,7 +55,8 @@ woofy = {
         baseTop:    20, //Base top to place the first woofy
         margin:     20,
         speed:      500,
-        life:       3000,  //Length to show woofies for
+        life:       10000,  //Length to show woofies for
+        removeSpeed:  1000
     },
 
     /**
@@ -83,7 +84,7 @@ woofy = {
     add: function(msg, type)
     {
         this.messages.push({msg: msg, type: type});
-        this.$body.prepend('<div id="woofy-message-' + (++this.id) + '" class="woofy-message woofy-'+type+'">'+msg+'</div>');
+        this.$body.prepend('<div id="woofy-message-' + (++this.id) + '" class="woofy-message woofy-'+type+'"><div>'+msg+'</div></div>');
         var $msg = $('#woofy-message-' + this.id);
 
         this.lastHeight     = $msg.height();
@@ -98,8 +99,8 @@ woofy = {
      */
     remove: function($obj)
     {
-        $obj.animate({top: -250}, this.style.life)
-            .animate({opacity: 0}, this.style.life * .8);
+        $obj.animate({top: -250}, this.style.removeSpeed)
+            .animate({opacity: 0}, this.style.removeSpeed * .5);
 
         this.queueHeight -= $obj.height() + 20;
         this.messages.pop();
@@ -120,5 +121,4 @@ woofy = {
 //===============================================
 jQuery(function($){
     woofy.init();
-    woofy.create('Hello World!');
 });

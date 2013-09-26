@@ -4,6 +4,7 @@
 jQuery(function($){
     $window = $(window);
     $doc    = $('html, body');
+    $router = $('#router');
 
     $('a').click(function(){
         var $this = $(this);
