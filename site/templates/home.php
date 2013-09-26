@@ -4,7 +4,7 @@
     <img class="bg" src="<?= url('assets/img/bg/clouds.jpg') ?>">
     <div id="login">
         <h1>Driven<b>Ed</b> <sub>rapid Education with Google Drive</sub></h1>
-        <a href="#login">Login with Google</a>
+        <button id="login-button">Login with Google</button>
         <p class="color-invert">or learn more below
     </div>
 </header>
@@ -29,4 +29,8 @@
     </div>
 </section>
 
+<?php snippet('scripts') ?>
+
 <script src="<?= url('assets/js/pages/home.js') ?>"></script>
+
+<?php snippet('footer') ?>

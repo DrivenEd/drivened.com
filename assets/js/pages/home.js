@@ -35,4 +35,11 @@ jQuery(function($){
         }
     });
     $window.trigger('scroll');
+
+    //===============================================
+    // Authenticat
+    //===============================================
+    $('#login-button').click(function(){
+        app.auth('login');
+    });
 });

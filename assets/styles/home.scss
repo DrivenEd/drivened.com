@@ -21,7 +21,7 @@ header{
         pointer-events: none;        
     }
 
-    a{
+    button{
         @include transition(background 0.25s ease, border-color 0.25s ease);
         display: inline-block;
         margin-top: 50px;
@@ -32,6 +32,7 @@ header{
         color: $violet;
         background: $offWhite;
         border-radius: 4px;
+        border: none;
         border-bottom: 6px solid shade($offWhite, 15%);
         letter-spacing: 1px;
 
