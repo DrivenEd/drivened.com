@@ -6,11 +6,12 @@ html, body{
     height: 100%;
     font-family: 'Lato', sans-serif;
     background: $offWhite;
-    color: tint($violet, 22%);
+    color: $color;
 }
 
 a{
     text-decoration: none;
+    cursor: pointer;
 }
 b{font-weight: 700}
 p{

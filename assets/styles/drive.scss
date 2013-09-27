@@ -1,0 +1,68 @@
+@import 'common';
+
+html,body{
+    background: $violet;
+}
+
+menu{
+    margin: 0;
+    padding: 0;
+    height: 60px;
+    background: $offWhite;
+    border-bottom: 2px solid $white;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+
+    li{
+        list-style: none;
+        display: inline-block;
+        line-height: 60px;
+        height: 60px;
+        border-right: 1px solid shade($offWhite, 10%);
+    }
+
+    a{
+        @include transition(background 0.25s ease);
+        position: relative;
+        padding-left: 20px;
+        padding-right: 20px;
+        color: $color;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        background: $offWhite;
+        height: 60px;
+        display: inline-block;
+
+        &:hover{
+            background: darken($offWhite, 5%);
+            color: darken($color, 5%);
+        }     
+    }
+}
+
+#menu-button span{
+    @include transition($color 0.25s ease);
+    position: relative;
+    width: 36px;
+    height: 30px;
+    display: inline-block;
+    top: 9px;
+    background: $color;
+
+    &:after, &:before{
+        @include transition(background 0.25s ease);
+        content: ' ';
+        width: 36px;
+        height: 6px;
+        background: $offWhite;
+        position: absolute;
+        top: 6px;
+    }
+    &:before{top: 18px;}
+}
+#menu-button:hover{
+    span{
+        background: darken($color, 5%);
+        &:after, &:before{background: darken($offWhite, 5%)}
+    }    
+}

@@ -6,19 +6,32 @@
             /_______  /__|  |__| \_/  \___  >___|  /_______  //_______  /
                     \/                    \/     \/        \/         \/ 
 
-                                    DrivenEd
+
+
+                                DrivenEd - APP
+            This file contain the global APP object, used to interface with
+            Google.
+
+
+
 #Quick Reference
 app.auth(authMode, immediate);  //Authenticates the user using authMode (immeidately?)
 app.postRedirect(url, data);    //Redirects to url, with data
 
+app.init                        //Set an anonymous function to it to be called when
+                                    the client is loaded
 */
-            
+
+/**
+ * Global app object, used as an interface for the google api
+ */
 app = {
     clientID:   '245338645414-54mgv49e2sv6660nor41qnbu4vbvsv9v.apps.googleusercontent.com',
     scopes:     'https://www.googleapis.com/auth/drive',
     authMode:   '',     //Temporarily stores the current auth mode
     autoAuth:   '',     //The authentication mode to automatically call (if present)
     route:      '',     //Current route
+    init:       '',     //Anonymous function to call once the client starts
 
     /**
      * Makes an authentication request. Contains a callback to handle it
@@ -26,7 +39,8 @@ app = {
      *                     - login: Attempts to login into the dashboard
      * @param  {BOL} immeidate Whether to to auth immediately or through a popup
      */
-    auth: function(authMode, immediate){
+    auth: function(authMode, immediate)
+    {
         if(!authMode) return console.log('No authMode passed for app.auth()');
 
         this.authMode = authMode;
@@ -64,8 +78,8 @@ app = {
                                     type:   'error'
                                 }
                             ]
-                        });                        
-                    } else {                    
+                        });
+                    } else {
                         app.postRedirect('/', {
                             woofy: [
                                 {
@@ -82,15 +96,36 @@ app = {
 
     /**
      * Interface for gapi.client.request(), which makes an API request to a
-     * Google Service
-     * @param  {STR} path   The API request path. See: https://developers.google.com/apis-explorer/#p/
-     * @param  {OBJ} params Parameters to pass through the request
+     * Google Service.
+     * :: Helper methods below are shortcuts with different methods set
+     * https://developers.google.com/+/web/api/javascript
+     *
+     * @param {OBJ} data List of parameters as detailed in the link above
+     * @param {FUNC} func The callback
+     *
+     * @return {OBJ} HTTP return
      */
-    call: function(path, params){
-        gapi.client.request({
-            'path':     path,
-            'params':   params
-        });
+    request: function(data)
+    {
+        gapi.client.request(data);
+    },
+
+    /**
+     * Get interface for app.request
+     * @param  {STRING} request Filename, relative to https://www.googleapis.com/
+     * @param  {OBJ}    data    Contains the rest of the data
+     * @param  {FUNC}   func    Callback function
+     * 
+     * @return {OBJ}         JSON
+     */
+    get: function(request, data, func)
+    {
+        data = data || {};
+        data['method'] = 'GET';
+        data['path'] = request;
+        data['callback'] = func;
+
+        app.request(data);
     },
 
 
@@ -101,7 +136,8 @@ app = {
      * @param  {STR} url    URL to redirect to
      * @param  {OBJ} data   Data to POST
      */
-    postRedirect: function(url, data){
+    postRedirect: function(url, data)
+    {
         _.each(data, function(value, index){
             var json = JSON.stringify(value);
             $router.append("<input name='"+index+"[]' value='"+json+"'>");
@@ -115,15 +151,21 @@ app = {
 //###############################################
 // Initializes Drivened
 //###############################################
-function startDrivened(){
+function startDrivened()
+{
+    gapi.auth.init();
     if(app.autoAuth)
         app.auth(app.autoAuth, true);
+
+    if(_.isFunction(app.init))
+        app.init();
 }
 
 
 //###############################################
 // Debug info
 //###############################################
-jQuery(function(){
+jQuery(function()
+{
    // woofy.create('Could not log in! Please refresh the page and try again.', 'error');
 });

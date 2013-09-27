@@ -11,7 +11,7 @@
     <script src="<?= url('assets/js/underscore.js') ?>"></script>
     <script src="<?= url('assets/js/global.js') ?>"></script>
 
-    <?php echo css('assets/styles/home.css') ?>
+    <?php echo css('assets/styles/'. $page->template() .'.css') ?>
 </head>
 
 <body>

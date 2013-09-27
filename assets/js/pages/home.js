@@ -39,7 +39,7 @@ jQuery(function($){
     //===============================================
     // Authenticat
     //===============================================
-    $('#login-button').click(function(){
+    $('.login-button').click(function(){
         app.auth('login');
     });
 });

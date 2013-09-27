@@ -1,10 +1,10 @@
 <?php snippet('header') ?>
-
+<a name="login"></a>
 <header>
     <img class="bg" src="<?= url('assets/img/bg/clouds.jpg') ?>">
     <div id="login">
         <h1>Driven<b>Ed</b> <sub>rapid Education with Google Drive</sub></h1>
-        <button id="login-button">Login with Google</button>
+        <button class="login-button">Login with Google</button>
         <p class="color-invert">or learn more below
     </div>
 </header>
@@ -14,7 +14,7 @@
     <a href="#how">How</a>
     <a href="#security">Security</a>
     <a href="#future">Future</a>
-    <a href="#contact">Login</a>
+    <a href="#login" class="login-button">Login</a>
 </nav>
 
 <section>
